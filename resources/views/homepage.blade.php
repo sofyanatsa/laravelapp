@@ -2,18 +2,20 @@
 
 @section('main')
   <div id="homepage">
-	  
-	<div class="col-sm-12">
-		<div class="col-sm-6">
+
+	<div class="col-lg-12">
+		<div class="col-lg-6">
 			<h2>Homepage</h2>
 			<p>Aplikasi <strong>laravelapp</strong> dibuat sebagai latihan mempelajari Laravel.</p>
 
 
 			<div class="your-clock"></div>
+      <div class="clock"></div>
+
 			<div align="center" id="table"></div>
-			
+
 		</div/>
-		<div class="col-sm-6">
+		<div class="col-lg-6">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators">
@@ -37,7 +39,7 @@
 				</div>
 			  </div>
 
-			  <!-- Left and right controls 
+			  <!-- Left and right controls
 			  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				<span class="sr-only">Previous</span>
@@ -47,20 +49,14 @@
 				<span class="sr-only">Next</span>
 			  </a-->
 			</div>
-			
+
 		</div>
 	</div>
-	
-	<div class="col-sm-12">
-		<p>Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang 
-		</p>
-	</div>
-	
-  </div>
-@stop
 
-@section('footer')
-  <div id="footer">
-      <p>&copy; 2018 localhost:8000</p>
+	<div class="col-sm-12" id="run-text">
+		<marquee behavior="scroll" direction="left">Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang Teks Baris panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang
+		</marquee>
+	</div>
+
   </div>
 @stop
