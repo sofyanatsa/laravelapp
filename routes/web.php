@@ -12,10 +12,15 @@
 */
 
 Route::get('/', 'PagesController@homepage');
-Route::get('about', 'PagesController@about');
-Route::get('siswa', 'SiswaController@index');
-Route::get('siswa/create', 'SiswaController@create');
-Route::post('siswa', 'SiswaController@store');
+Route::get('praadzan', 'PagesController@praadzan');
+Route::get('praiqomah', 'PagesController@praiqomah');
+Route::get('blank', 'PagesController@blank');
+
+Route::get('admin/login', 'AdminController@login');
+Route::get('admin', 'AdminController@home');
+Route::get('admin/about', 'AdminController@about');
+Route::get('admin/create', 'AdminController@create');
+Route::post('admin', 'AdminController@store');
 
 Route::get('halaman-rahasia',[
   'as'  => 'secret',

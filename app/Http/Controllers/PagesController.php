@@ -12,9 +12,19 @@ class PagesController extends Controller
       return view('homepage');
     }
 
-    public function about()
+    public function praadzan()
     {
-      $halaman = 'about';
-      return view('about', compact('halaman'));
+      return view('praadzan');
     }
+
+    public function praiqomah()
+    {
+      return view('praiqomah');
+    }
+
+    public function blank()
+    {
+      return view('blank');
+    }
+
 }
