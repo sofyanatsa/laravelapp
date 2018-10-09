@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class PagesController extends Controller
 {
     //
     public function homepage()
     {
+  	  $users = DB::select('select * from agenda');
+      return view('homepage',['users'=>$users]);
       return view('homepage');
     }
 

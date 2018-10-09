@@ -42,11 +42,25 @@
         <li><a href="{{ url('admin/tema') }}">Tema</a></li>
       @endif
 
+      @if (!empty($halaman) && $halaman == 'praadzan')
+        <li class="active"><a href="{{ url('admin/praadzan') }}">Pra-adzan
+        <span class="sr-only">(current)</span></a></li>
+      @else
+        <li><a href="{{ url('admin/praadzan') }}">Pra-adzan</a></li>
+      @endif
+
       @if (!empty($halaman) && $halaman == 'wsholat')
         <li class="active"><a href="{{ url('admin/wsholat') }}">Waktu Sholat
         <span class="sr-only">(current)</span></a></li>
       @else
         <li><a href="{{ url('admin/wsholat') }}">Waktu Sholat</a></li>
+      @endif
+
+      @if (!empty($halaman) && $halaman == 'waktu')
+        <li class="active"><a href="{{ url('admin/waktu') }}">Atur Waktu
+        <span class="sr-only">(current)</span></a></li>
+      @else
+        <li><a href="{{ url('admin/waktu') }}">Atur Waktu</a></li>
       @endif
 
       @if (!empty($halaman) && $halaman == 'detail')
@@ -56,11 +70,11 @@
         <li><a href="{{ url('admin/detail') }}">Detail Masjid</a></li>
       @endif
 
-      @if (!empty($halaman) && $halaman == 'waktu')
-        <li class="active"><a href="{{ url('admin/waktu') }}">Atur Waktu
+      @if (!empty($halaman) && $halaman == 'admin')
+        <li class="active"><a href="{{ url('admin/admins') }}">Admin
         <span class="sr-only">(current)</span></a></li>
       @else
-        <li><a href="{{ url('admin/waktu') }}">Atur Waktu</a></li>
+        <li><a href="{{ url('admin/admins') }}">Admin</a></li>
       @endif
 
       @if (!empty($halaman) && $halaman == 'about')
@@ -71,7 +85,7 @@
       @endif
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Login</a></li>
+      <li><a href="/admin/logout">Logout</a></li>
       <li class="dropdown">
       </li>
     </ul>

@@ -1,39 +1,37 @@
 @extends('template')
 
 @section('main')
+  <script src="{{ asset('js/waktusholat.js') }}"></script>
   <div id="homepage">
 
 	<div class="col-lg-12">
-		<div class="col-lg-6" align="center">
-			<h1>JADWAL SHOLAT</h1>
-			<h4>Masjid Alumnni IPB</h4>
+		<div class="col-lg-5" align="center" style="padding-top:5%">
+			<h1><strong>JADWAL SHOLAT</strong></h1>
+			<h4><strong>Masjid Alumnni IPB</strong></h4>
 
 			<div class="your-clock"></div>
+      <h2 id="tanggal"></h2>
+      <h1 id="skr_sholat"></h1>
+      <div class="clock-sholat"></div>
 
-      <h2>Dzuhur</h2>
-      <div class="clock-sholat" style="margin:2em;"></div>
-
-      <div align="center" id="table"></div>
 
 		</div/>
-		<div class="col-lg-6">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			  <!-- Wrapper for slides -->
-			  <div class="carousel-inner">
-				<div class="item active">
-				  <img src="{{ asset('images/kajian.jpeg') }}" alt="Los Angeles" width="100%" height="100%">
-				</div>
+		<div class="col-lg-7">
+      <div class="bg-img" style="background:black; height:-webkit-fill-available">
+  			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  			  <!-- Wrapper for slides -->
+  			  <div class="carousel-inner">
+            <?php $x = 0;?>
+    				@foreach ($users as $user)
+    				<div class="item <?php if($x==0){echo "active";}?>">
+    				  <img src="{{ asset('images/'.$user->gambar) }}" alt="{{$user->judul}}" width="100%" height="100%">
+    				</div>
+    				<?php $x++;?>
+    				@endforeach
+  			  </div>
 
-				<div class="item">
-				  <img src="{{ asset('images/kajian2.jpeg') }}" alt="Chicago" width="100%" height="100%">
-				</div>
-
-				<div class="item">
-				  <img src="{{ asset('images/cinque.jpeg') }}" alt="New York" width="100%" height="100%">
-				</div>
-			  </div>
-
-			</div>
+  			</div>
+      </div>
 
 		</div>
 	</div>
@@ -43,10 +41,15 @@
 	</div>
 
   </div>
+
+  <script>
+  //Pindah ke hal praadzan
+
+  praadzanmenit = Math.abs(sekarangmenit - sterkini_menit)
+  // console.log("praadzan_skr = " + list[sholat_list]  + " -> " + sekarangmenit + " - " + sterkini_menit + " = " + praadzanmenit);
+
+    setTimeout(function(){
+      window.location.replace('http://localhost:8000/praadzan');
+    },praadzanmenit*1000*60);
+  </script>
 @stop
-<script>
-// Pindah ke hal praadzan
-  // setTimeout(function(){
-  //   window.location.replace('http://localhost:8000/praadzan');
-  // },10000);
-</script>
