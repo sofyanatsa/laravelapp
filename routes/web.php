@@ -20,12 +20,15 @@ Route::get('admin/login', 'AdminController@login');
 Route::get('admin/logout', 'AdminController@logout');
 Route::post('loginPost', 'AdminController@loginPost');
 Route::get('admin', 'AdminController@index');
-Route::get('admins', 'AdminController@index');
+
 Route::get('admin/agenda', 'AdminController@agenda');
-Route::get('admin/detailagenda/{agenda}', 'AdminController@detailagenda');
+Route::get('admin/detailagenda/{id}', 'AdminController@detailagenda');
 Route::get('admin/createagenda', 'AdminController@createagenda');
 Route::post('admin/agendacreate', 'AdminController@agendacreate');
 Route::get('admin/hapusagenda/{id}', 'AdminController@destroy');
+Route::get('admin/editagenda/{id}', 'AdminController@editagenda');
+Route::post('admin/agendaedit/{id}', 'AdminController@update');
+
 Route::get('admin/info', 'AdminController@info');
 Route::get('admin/createinfo', 'AdminController@createinfo');
 Route::get('admin/about', 'AdminController@about');
