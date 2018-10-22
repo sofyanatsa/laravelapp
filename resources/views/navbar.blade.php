@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse navbar-fixed-top">
 <div class="container-fluid">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed"
@@ -10,7 +10,10 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="{{ url('admin/') }}">AdminApp</a>
+    <a class="navbar-brand" href="{{ url('admin/') }}" style="padding:10px;">
+      <img src="{{ asset('bootstrap_3_3_6/docs/assets/brand/bootstrap-punchout.svg') }}" width="30" height="30" style="display:inline;"></img>
+      AdminApp
+    </a>
   </div><!-- navbar-header -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
@@ -42,11 +45,11 @@
         <li><a href="{{ url('admin/tema') }}">Tema</a></li>
       @endif
 
-      @if (!empty($halaman) && $halaman == 'praadzan')
-        <li class="active"><a href="{{ url('admin/praadzan') }}">Pra-adzan
+      @if (!empty($halaman) && $halaman == 'durasi')
+        <li class="active"><a href="{{ url('admin/durasi') }}">Durasi
         <span class="sr-only">(current)</span></a></li>
       @else
-        <li><a href="{{ url('admin/praadzan') }}">Pra-adzan</a></li>
+        <li><a href="{{ url('admin/durasi') }}">Durasi</a></li>
       @endif
 
       @if (!empty($halaman) && $halaman == 'wsholat')
@@ -85,9 +88,7 @@
       @endif
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/admin/logout">Logout</a></li>
-      <li class="dropdown">
-      </li>
+      <a class="btn btn-default navbar-btn" href="/admin/logout" type="button" style="margin-left: 10px;margin-right: 10px;">Logout</a>
     </ul>
   </div><!-- collapse navbar-collapse -->
 </div>

@@ -20,23 +20,57 @@ Route::get('admin/login', 'AdminController@login');
 Route::get('admin/logout', 'AdminController@logout');
 Route::post('loginPost', 'AdminController@loginPost');
 Route::get('admin', 'AdminController@index');
+// Route::get('super', 'AdminController@index');
+Route::get('admin/about', 'AdminController@about');
 
+// Agenda
 Route::get('admin/agenda', 'AdminController@agenda');
 Route::get('admin/detailagenda/{id}', 'AdminController@detailagenda');
 Route::get('admin/createagenda', 'AdminController@createagenda');
 Route::post('admin/agendacreate', 'AdminController@agendacreate');
-Route::get('admin/hapusagenda/{id}', 'AdminController@destroy');
+Route::get('admin/hapusagenda/{id}', 'AdminController@destroyagenda');
 Route::get('admin/editagenda/{id}', 'AdminController@editagenda');
-Route::post('admin/agendaedit/{id}', 'AdminController@update');
+Route::post('admin/agendaedit/{id}', 'AdminController@updateagenda');
 
+// Durasi
+Route::get('admin/durasi', 'AdminController@durasi');
+Route::get('admin/durasipraadzan/{id}', 'AdminController@durasipraadzan');
+Route::post('admin/durasipraadzanPost/{id}', 'AdminController@durasipraadzanPost');
+Route::get('admin/durasiiqomah/{id}', 'AdminController@durasiiqomah');
+Route::post('admin/durasiiqomahPost/{id}', 'AdminController@durasiiqomahPost');
+Route::get('admin/durasisholat/{s}', 'AdminController@durasisholat');
+Route::post('admin/durasisholatPost/{id}', 'AdminController@durasisholatPost');
+
+// Info Baris
 Route::get('admin/info', 'AdminController@info');
+Route::get('admin/detailinfo/{id}', 'AdminController@detailinfo');
 Route::get('admin/createinfo', 'AdminController@createinfo');
-Route::get('admin/about', 'AdminController@about');
-Route::get('admin/create', 'AdminController@create');
-Route::post('admin', 'AdminController@store');
+Route::post('admin/createinfoPost', 'AdminController@createinfoPost');
+Route::get('admin/hapusinfo/{id}', 'AdminController@destroyinfo');
+Route::get('admin/editinfo/{id}', 'AdminController@editinfo');
+Route::post('admin/editinfoPost/{id}', 'AdminController@editinfoPost');
+
+// Waktu sholat
+Route::get('admin/wsholat', 'AdminController@wsholat');
+Route::get('admin/aturwsholat', 'AdminController@aturwsholat');
+
+// Admin
+Route::get('admin/admins', 'AdminController@admins');
+Route::get('admin/detailprofil/{id}', 'AdminController@detailprofil');
+Route::get('admin/aturprofil/{id}', 'AdminController@aturprofil');
+Route::post('admin/profilatur/{id}', 'AdminController@updateprofil');
+Route::get('admin/ubahpaswd', 'AdminController@ubahpaswd');
+Route::post('admin/ubahpaswdPost/{id}', 'AdminController@ubahpaswdPost');
+Route::get('admin/listadmin', 'AdminController@listadmin');
+Route::get('admin/createadmin', 'AdminController@createadmin');
+Route::post('admin/createadminPost', 'AdminController@createadminPost');
+Route::get('admin/hapusadmin/{id}', 'AdminController@destroyadmin');
 
 Route::resource('agenda','AdminController@agenda'); //tambahkan baris ini
 Route::get('agenda/{agenda}', 'AdminController@show');
+
+Route::get('admin/create', 'AdminController@create');
+Route::post('admin', 'AdminController@store');
 
 Route::get('halaman-rahasia',[
   'as'  => 'secret',

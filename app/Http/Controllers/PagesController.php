@@ -10,24 +10,30 @@ class PagesController extends Controller
     //
     public function homepage()
     {
-  	  $users = DB::select('select * from agenda');
-      return view('homepage',['users'=>$users]);
-      return view('homepage');
+  	  $data = DB::select('select * from agenda');
+    	$info = DB::select('select * from info');
+    	$masjid = DB::select('select * from masjid where id = 1');
+      return view('homepage',compact('data','info','masjid'));
     }
 
     public function praadzan()
     {
-      return view('praadzan');
+  	  $data = DB::select('select * from agenda');
+    	$info = DB::select('select * from info');
+    	$masjid = DB::select('select * from masjid where id = 1');
+      return view('praadzan',compact('data','info','masjid'));
     }
 
     public function praiqomah()
     {
-      return view('praiqomah');
+      $masjid = DB::select('select * from masjid where id = 1');
+      return view('praiqomah',compact('masjid'));
     }
 
     public function blank()
     {
-      return view('blank');
+      $masjid = DB::select('select * from masjid where id = 1');
+      return view('blank',compact('masjid'));
     }
 
 }

@@ -1,3 +1,19 @@
+/* FlipClock */
+.flip-clock-wrapper ul {
+        background: #fff !important;
+    }
+
+        .flip-clock-wrapper ul li a div.up:after {
+            background-color: black !important;
+            background-color: rgba(0, 0, 0, 0.4) !important;
+        }
+
+        .flip-clock-wrapper ul li a div div.inn {
+            color: lightgreen !important;
+            text-shadow: 0 1px 1px #555 !important;
+            background-color: black !important;
+        }
+
 html {
   position: relative;
   min-height: 100%;
@@ -41,6 +57,16 @@ marquee {
   background-color: #212121;
   font-size: 1.5em;
 }
+/* Homepage Border Sholat */
+.border-active{
+  border: 10px solid grey;
+  width: fit-content;
+  border-radius: 20px;
+}
+#table-jadwal td{
+  text-align: -webkit-center;
+}
+
 /* Praadzan */
 .clock-sholat-0, .clock-sholat-1,.clock-sholat-2,.clock-sholat-3,.clock-sholat-4,.clock-sholat-5{
   zoom: 0.7;

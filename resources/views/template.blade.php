@@ -18,6 +18,8 @@
   	<script src="{{ asset('js/flipclock.min.js') }}"></script>
   	<script src="{{ asset('js/PrayTimes.js') }}"></script>
 
+    <script src="{{ asset('js/waktusholat.js') }}"></script>
+
   </head>
   <body>
     <div class="container-fluid">
