@@ -18,10 +18,11 @@
   	<script src="{{ asset('js/flipclock.min.js') }}"></script>
   	<script src="{{ asset('js/PrayTimes.js') }}"></script>
 
-    <script src="{{ asset('js/waktusholat.js') }}"></script>
+    <!-- <script src="{{ asset('js/waktusholat.js') }}"></script> -->
 
   </head>
   <body>
+    @include('jsjadwalsholat')
     <div class="container-fluid">
       @yield('main')
     </div>

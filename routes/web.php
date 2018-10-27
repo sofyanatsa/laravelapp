@@ -50,9 +50,18 @@ Route::get('admin/hapusinfo/{id}', 'AdminController@destroyinfo');
 Route::get('admin/editinfo/{id}', 'AdminController@editinfo');
 Route::post('admin/editinfoPost/{id}', 'AdminController@editinfoPost');
 
-// Waktu sholat
+// Atur waktu sholat
 Route::get('admin/wsholat', 'AdminController@wsholat');
 Route::get('admin/aturwsholat', 'AdminController@aturwsholat');
+Route::post('admin/aturwsholatPost/{id}', 'AdminController@aturwsholatPost');
+
+// Atur Waktu
+Route::get('admin/aturwaktu', 'AdminController@aturwaktu');
+
+// Detail Masjid
+Route::get('admin/detailmasjid', 'AdminController@detailmasjid');
+Route::get('admin/editmasjid/{id}', 'AdminController@editmasjid');
+Route::post('admin/editmasjidPost/{id}', 'AdminController@editmasjidPost');
 
 // Admin
 Route::get('admin/admins', 'AdminController@admins');

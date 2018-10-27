@@ -59,18 +59,18 @@
         <li><a href="{{ url('admin/wsholat') }}">Waktu Sholat</a></li>
       @endif
 
-      @if (!empty($halaman) && $halaman == 'waktu')
-        <li class="active"><a href="{{ url('admin/waktu') }}">Atur Waktu
+      @if (!empty($halaman) && $halaman == 'time')
+        <li class="active"><a href="{{ url('admin/aturwaktu') }}">Atur Waktu
         <span class="sr-only">(current)</span></a></li>
       @else
-        <li><a href="{{ url('admin/waktu') }}">Atur Waktu</a></li>
+        <li><a href="{{ url('admin/aturwaktu') }}">Atur Waktu</a></li>
       @endif
 
       @if (!empty($halaman) && $halaman == 'detail')
-        <li class="active"><a href="{{ url('admin/detail') }}">Detail Masjid
+        <li class="active"><a href="{{ url('admin/detailmasjid') }}">Detail Masjid
         <span class="sr-only">(current)</span></a></li>
       @else
-        <li><a href="{{ url('admin/detail') }}">Detail Masjid</a></li>
+        <li><a href="{{ url('admin/detailmasjid') }}">Detail Masjid</a></li>
       @endif
 
       @if (!empty($halaman) && $halaman == 'admin')

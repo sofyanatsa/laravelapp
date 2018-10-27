@@ -4,13 +4,13 @@
   <div id="normal">
 
 	<div class="col-lg-12">
-		<div class="col-lg-5" align="center" style="padding-top:1%">
-      <div class="row">
+		<div class="col-lg-5" align="center">
+      <div class="row" id="diatastulisan">
   			<h1><strong>JADWAL SHOLAT</strong></h1>
-  			<h4><strong>Masjid Alumnni IPB</strong></h4>
+  			<h4><strong>{{ $masjid[0]->namaMasjid }}</strong></h4>
 
   			<div class="your-clock"></div>
-        <h2 id="tanggal"></h2>
+        <h3 id="tanggal" style="margin-top:0px"></h3>
         <h1 id="skr_sholat" style="display:none"></h1>
       </div>
       <?php $s = "<script>document.write(sholat_list);</script>";
@@ -102,7 +102,7 @@
 
   <script>
   //Pindah ke hal praadzan
-  var durasipraadzan = <?php echo $masjid[0]->durasiPraadzan ?>;
+  var durasipraadzan = {{ $masjid[0]->durasiPraadzan }};
   homemenit = (Math.abs(sekarangmenit - sterkini_menit)) - durasipraadzan;
   // console.log("praadzan_skr = " + list[sholat_list]  + " -> " + sekarangmenit + " - " + sterkini_menit + " - " + durasipraadzan + " = " + praadzanmenit);
 
