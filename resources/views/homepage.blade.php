@@ -5,12 +5,12 @@
 
 	<div class="col-lg-12">
 		<div class="col-lg-5" align="center">
-      <div class="row" id="diatastulisan">
+      <div class="row" id="home">
   			<h1><strong>JADWAL SHOLAT</strong></h1>
   			<h4><strong>{{ $masjid[0]->namaMasjid }}</strong></h4>
 
   			<div class="your-clock"></div>
-        <h3 id="tanggal" style="margin-top:0px"></h3>
+        <h3 id="tanggal" style="margin-bottom:30px;margin-top:0px;"></h3>
         <h1 id="skr_sholat" style="display:none"></h1>
       </div>
       <?php $s = "<script>document.write(sholat_list);</script>";

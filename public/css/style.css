@@ -44,6 +44,12 @@ body{
     .clock-sholat-0, .clock-sholat-1,.clock-sholat-2,.clock-sholat-3,.clock-sholat-4,.clock-sholat-5{
       zoom: 0.6;}
     marquee {font-size: 1.7em;}
+    /* Praadzan */
+    .downcounter {zoom: 0.5; -moz-transform: scale(0.5);}
+    #sholat-terdekat {zoom: 1; -moz-transform: scale(1);}
+    /* Iqomah */
+    .clock-downcounter { zoom: 1.2; -moz-transform: scale(1.2);}
+    #iqomah {padding-top:100px;}
   }
 
   @media only screen and (min-height: 701px) and (max-height: 800px){
@@ -51,6 +57,14 @@ body{
     .clock-sholat-0, .clock-sholat-1,.clock-sholat-2,.clock-sholat-3,.clock-sholat-4,.clock-sholat-5{
       zoom: 0.7;}
     marquee {font-size: 1.8em;}
+    /* Praadzan */
+    .downcounter {zoom: 0.6; -moz-transform: scale(0.6);}
+    #sholat-terdekat {zoom: 1.1; -moz-transform: scale(1.1);}
+    #praadzan{margin-top: 5%;}
+    /* Iqomah */
+    .clock-downcounter { zoom: 1.5; -moz-transform: scale(1.5);}
+    #iqomah {padding-top:180px;}
+    .tulisaniqomah, .tulisansholat{font-size: 4em;}
   }
 
   @media only screen and (min-height: 801px) and (max-height: 900px){
@@ -58,17 +72,33 @@ body{
     .clock-sholat-0, .clock-sholat-1,.clock-sholat-2,.clock-sholat-3,.clock-sholat-4,.clock-sholat-5{
       zoom: 0.8;}
     marquee {font-size: 2em;}
+    /* Praadzan */
+    .downcounter {zoom: 0.7; -moz-transform: scale(0.7);}
+    #sholat-terdekat {zoom: 1.3; -moz-transform: scale(1.3);}
+    #praadzan{margin-top: 6%;}
+    /* Iqomah */
+    .clock-downcounter { zoom: 1.8; -moz-transform: scale(1.8);}
+    #iqomah {padding-top:180px;}
+    .tulisaniqomah, .tulisansholat{font-size: 5em;}
   }
 
   @media only screen and (min-height: 901px) and (max-height: 1800px){
-    .your-clock {zoom: 1.3; -moz-transform: scale(0.8);}
+    .your-clock {zoom: 1.3; -moz-transform: scale(1.3);}
     .clock-sholat-0, .clock-sholat-1,.clock-sholat-2,.clock-sholat-3,.clock-sholat-4,.clock-sholat-5{
       zoom: 0.9;}
     marquee {font-size: 2em;}
-    #diatastulisan{margin-top: 5%;}
+    #home{margin-top: 5%;}
     h1{font-size: 3em;}
     h3{font-size: 2.4em;}
     h4{font-size: 1.8em;}
+    /* Praadzan */
+    .downcounter {zoom: 0.8; -moz-transform: scale(0.8);}
+    #sholat-terdekat {zoom: 1.5; -moz-transform: scale(1.5);}
+    #tulisanpraadzan{margin-top: 15%;}
+    /* Iqomah */
+    .clock-downcounter { zoom: 2; -moz-transform: scale(2);}
+    #iqomah {padding-top:200px;}
+    .tulisaniqomah, .tulisansholat{font-size: 6em;}
   }
 /* =screen-sm
   @media all and (max-width: 479px){
@@ -102,10 +132,7 @@ body{
 .flip-clock-label{
   display: none !important;
 }
-.clock-downcounter{
-  zoom: 1.2;
-  -moz-transform: scale(1.5)
-}
+
 marquee {
   position: fixed;
   color: white;
