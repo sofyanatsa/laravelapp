@@ -10,6 +10,7 @@ class PagesController extends Controller
     //
     public function homepage()
     {
+      // $input = $req->all();
   	  $data = DB::select('select * from agenda');
     	$info = DB::select('select * from info');
     	$masjid = DB::select('select * from masjid where id = 1');

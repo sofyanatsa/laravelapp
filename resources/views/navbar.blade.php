@@ -1,28 +1,44 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
 <div class="container-fluid">
   <div class="navbar-header">
+    @if (empty($halaman))
     <button type="button" class="navbar-toggle collapsed"
             data-toggle="collapse"
             data-target="#bs-example-navbar-collapse-1"
-            aria-expanded="false">
+            aria-expanded="false" 
+            style="float: left; margin-left: 8px; margin-right: 20%; border-color: transparent;">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
+    @else
+    <button onclick="goBack()" class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+            style="float: left; margin-left: 8px; margin-right: 20%; padding: 6px 10px; border-color: transparent;">
+      <img src="{{ asset('icon/go-back-left-arrow.png') }}" style="display:inline; height: 18px;"></img>
+    </button>
+    <script>
+      function goBack(){
+        window.history.back();
+      }
+    </script>
+    @endif
     <a class="navbar-brand" href="{{ url('admin/') }}" style="padding:10px;">
       <img src="{{ asset('bootstrap_3_3_6/docs/assets/brand/bootstrap-punchout.svg') }}" width="30" height="30" style="display:inline;"></img>
       AdminApp
     </a>
   </div><!-- navbar-header -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="max-height: 100%;">
     <ul class="nav navbar-nav">
-      @if (!empty($halaman) && $halaman == 'siswa')
+      <!-- @if (!empty($halaman) && $halaman == 'siswa')
         <li class="active"><a href="{{ url('admin/create') }}">Siswa
         <span class="sr-only">(current)</span></a></li>
       @else
         <li><a href="{{ url('admin/create') }}">Siswa</a></li>
-      @endif
+      @endif -->
 
       @if (!empty($halaman) && $halaman == 'agenda')
         <li class="active"><a href="{{ url('admin/agenda') }}">Agenda

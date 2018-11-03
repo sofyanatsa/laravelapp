@@ -20,7 +20,6 @@ Route::get('admin/login', 'AdminController@login');
 Route::get('admin/logout', 'AdminController@logout');
 Route::post('loginPost', 'AdminController@loginPost');
 Route::get('admin', 'AdminController@index');
-// Route::get('super', 'AdminController@index');
 Route::get('admin/about', 'AdminController@about');
 
 // Agenda
@@ -32,15 +31,6 @@ Route::get('admin/hapusagenda/{id}', 'AdminController@destroyagenda');
 Route::get('admin/editagenda/{id}', 'AdminController@editagenda');
 Route::post('admin/agendaedit/{id}', 'AdminController@updateagenda');
 
-// Durasi
-Route::get('admin/durasi', 'AdminController@durasi');
-Route::get('admin/durasipraadzan/{id}', 'AdminController@durasipraadzan');
-Route::post('admin/durasipraadzanPost/{id}', 'AdminController@durasipraadzanPost');
-Route::get('admin/durasiiqomah/{id}', 'AdminController@durasiiqomah');
-Route::post('admin/durasiiqomahPost/{id}', 'AdminController@durasiiqomahPost');
-Route::get('admin/durasisholat/{s}', 'AdminController@durasisholat');
-Route::post('admin/durasisholatPost/{id}', 'AdminController@durasisholatPost');
-
 // Info Baris
 Route::get('admin/info', 'AdminController@info');
 Route::get('admin/detailinfo/{id}', 'AdminController@detailinfo');
@@ -50,6 +40,19 @@ Route::get('admin/hapusinfo/{id}', 'AdminController@destroyinfo');
 Route::get('admin/editinfo/{id}', 'AdminController@editinfo');
 Route::post('admin/editinfoPost/{id}', 'AdminController@editinfoPost');
 
+// Tema
+Route::get('admin/tema', 'AdminController@tema');
+Route::post('admin/temaPost/{id}', 'AdminController@temaPost');
+
+// Durasi
+Route::get('admin/durasi', 'AdminController@durasi');
+Route::get('admin/durasipraadzan/{id}', 'AdminController@durasipraadzan');
+Route::post('admin/durasipraadzanPost/{id}', 'AdminController@durasipraadzanPost');
+Route::get('admin/durasiiqomah/{id}', 'AdminController@durasiiqomah');
+Route::post('admin/durasiiqomahPost/{id}', 'AdminController@durasiiqomahPost');
+Route::get('admin/durasisholat/{s}', 'AdminController@durasisholat');
+Route::post('admin/durasisholatPost/{id}', 'AdminController@durasisholatPost');
+
 // Atur waktu sholat
 Route::get('admin/wsholat', 'AdminController@wsholat');
 Route::get('admin/aturwsholat', 'AdminController@aturwsholat');
@@ -57,6 +60,7 @@ Route::post('admin/aturwsholatPost/{id}', 'AdminController@aturwsholatPost');
 
 // Atur Waktu
 Route::get('admin/aturwaktu', 'AdminController@aturwaktu');
+Route::post('admin/aturwaktuPost', 'AdminController@aturwaktuPost');
 
 // Detail Masjid
 Route::get('admin/detailmasjid', 'AdminController@detailmasjid');
