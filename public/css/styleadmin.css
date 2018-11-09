@@ -1,0 +1,65 @@
+footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  font-size: 0.9em;
+  padding-top: 20px;
+}
+
+hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top: 1px solid #ddd;
+    padding-top: 5px;
+}
+
+/* Home Admin */
+.box-row{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.box-border{
+  border: 1px solid #ddd;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 5px;
+  font-size: smaller;
+  text-align: center;
+  border-radius: 5px;
+  color: black;
+}
+.box-border img{
+  height: 40px;
+  width: 40px;
+}
+
+/* Agenda */
+.box-border-list{
+  border-top: 1px solid #ddd;
+  padding: 5px;
+  font-size: small;
+  display: inline-flex;
+  width: 100%;
+}
+.box-border-list:hover{
+  background-color: #f5f5f5;
+}
+.box-border-list img{
+  height: 80px;
+  width: 80px;
+}
+.box-border-list-text{
+  padding-left: 5px;
+  width: 100%;
+}
+.box-border-list-text a{
+  color: black;
+}
+.box-border-list-button{
+  position: relative;
+  text-align: right;
+  display: inline-grid;
+}
