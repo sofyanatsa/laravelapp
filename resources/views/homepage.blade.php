@@ -11,7 +11,7 @@
             if(isset($_GET['variable'])){
               $name = $_GET['variable'];
               echo $name;
-              console.log($name);
+              //console.log($name);
             }
           ?>
     			<h4><strong>{{ $masjid[0]->namaMasjid }}</strong></h4>
@@ -82,13 +82,19 @@
     			<div id="myCarousel" class="carousel slide" data-ride="carousel">
     			  <!-- Wrapper for slides -->
     			  <div class="carousel-inner">
-              <?php $x = 0;?>
-      				@foreach ($data as $data)
-        				<div class="item <?php if($x==0){echo "active";}?>">
-        				  <img src="{{ asset('images/'.$data->gambar) }}" alt="{{$data->judul}}" width="100%" height="100%">
-        				</div>
-      				<?php $x++;?>
-      				@endforeach
+              @if(!empty($data))
+                <?php $x = 0;?>
+        				@foreach ($data as $data)
+          				<div class="item <?php if($x==0){echo "active";}?>">
+          				  <img src="{{ asset('images/'.$data->gambar) }}" alt="{{$data->judul}}" width="100%" height="100%">
+          				</div>
+        				<?php $x++;?>
+        				@endforeach
+              @else
+                <div class="item active">
+                  <img src="{{ asset('profile/default.png') }}" alt="Default" width="100%" height="100%">
+                </div>
+              @endif
     			  </div>
 
     			</div>
@@ -99,9 +105,13 @@
 
   	<div class="col-sm-12" id="run-text">
   		<marquee behavior="scroll" direction="left" scrollamount="10">
-        @foreach ($info as $info)
-          <b>{{$info->isiInfo}}<span style="margin:50px"> </span> </b>
-        @endforeach
+        @if(!empty($info))
+          @foreach ($info as $info)
+            <b>{{$info->isiInfo}}<span style="margin:50px"> </span> </b>
+          @endforeach
+        @else
+          <b>{{ $masjid[0]->namaMasjid }}<span style="margin:50px"> </span> </b>
+        @endif
       </marquee>
   	</div>
 

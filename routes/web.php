@@ -30,6 +30,8 @@ Route::post('admin/agendacreate', 'AdminController@agendacreate');
 Route::get('admin/hapusagenda/{id}', 'AdminController@destroyagenda');
 Route::get('admin/editagenda/{id}', 'AdminController@editagenda');
 Route::post('admin/agendaedit/{id}', 'AdminController@updateagenda');
+Route::get('admin/onagenda/{id}', 'AdminController@onagenda');
+Route::get('admin/offagenda/{id}', 'AdminController@offagenda');
 
 // Info Baris
 Route::get('admin/info', 'AdminController@info');
@@ -39,6 +41,8 @@ Route::post('admin/createinfoPost', 'AdminController@createinfoPost');
 Route::get('admin/hapusinfo/{id}', 'AdminController@destroyinfo');
 Route::get('admin/editinfo/{id}', 'AdminController@editinfo');
 Route::post('admin/editinfoPost/{id}', 'AdminController@editinfoPost');
+Route::get('admin/oninfo/{id}', 'AdminController@oninfo');
+Route::get('admin/offinfo/{id}', 'AdminController@offinfo');
 
 // Tema
 Route::get('admin/tema', 'AdminController@tema');
