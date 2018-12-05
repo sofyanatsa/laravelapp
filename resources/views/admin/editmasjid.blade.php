@@ -33,11 +33,13 @@
 
             <div class="form-group">
               <label>Longitude</label><br>
-              <input name="longitude" value="{{ $data->longitude }}" type="text" class="form-control" placeholder="Longitude" disabled id="long">
+              <input name="longitude1" value="{{ $data->longitude }}" type="text" class="form-control" placeholder="Longitude" disabled id="longview">
+              <input name="longitude" type="hidden" id="long">
             </div>
             <div class="form-group">
               <label>Latitude</label><br>
-              <input name="latitude" value="{{ $data->latitude }}" type="text" class="form-control" placeholder="Latitude" disabled id="lat">
+              <input name="latitude1" value="{{ $data->latitude }}" type="text" class="form-control" placeholder="Latitude" disabled id="latview">
+              <input name="latitude" type="hidden" id="lat">
             </div>
 
             <a class="btn btn-default" type="button" onclick="getLocation()">Set Lokasi</a>
@@ -49,8 +51,9 @@
               <label>Deskripsi</label>
               <input name="deskripsi" value="{{ $data->deskripsi }}"  type="text" class="form-control" placeholder="Deskripsi">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a type="button" class="btn btn-default" href="{{ url('admin/detailmasjid') }}">Batal</a></div>
+            <br>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <a type="button" class="btn btn-default btn-block" href="{{ url('admin/detailmasjid') }}">Batal</a></div>
           </form>
         @endforeach
       @else
@@ -61,30 +64,26 @@
 
     <script>
         var x = document.getElementById("demo");
-        var long = document.getElementById("long");
-        var lat = document.getElementById("lat");
+        // var long = document.getElementById("long");
+        // var lat = document.getElementById("lat");
 
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else { 
+            } else {
                 x.innerHTML = "Geolocation is not supported.";
             }
-            console.log(position.coords.latitude);
         }
 
         function showPosition(position) {
-            if(position.coords.latitude != NULL || position.coords.longitude != NULL){
-              // x.innerHTML = "Latitude: " + position.coords.latitude + 
-              // "<br>Longitude: " + position.coords.longitude;
+            if(position.coords.latitude != null || position.coords.longitude != null){
 
-              var att = document.createAttribute("value");
-              att.value = position.coords.longitude;
-              long.setAttributeNode(att);
-
-              var att2 = document.createAttribute("value");
-              att2.value = position.coords.latitude;
-              lat.setAttributeNode(att2);
+              long = position.coords.longitude;
+              lat = position.coords.latitude;
+              $("#long").prop('value',long);
+              $("#lat").prop('value',lat);
+              $("#longview").prop('value',long);
+              $("#latview").prop('value',lat);
             }
         }
 

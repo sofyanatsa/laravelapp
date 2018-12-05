@@ -61,7 +61,7 @@
                       <option <?php if($data->wfont == "times"){echo"selected";}?> value="times">Times</option>
                       <option <?php if($data->wfont == "courier"){echo"selected";}?> value="courier">Courier</option>
                       <option <?php if($data->wfont == "comic sans ms"){echo"selected";}?> value="comic sans ms">Comic Sans MS</option>
-                      
+
 
                     </select>
                   </div>
@@ -93,10 +93,11 @@
                   </div>
                 </div>
               </div>
-              
-              <button type="submit" class="btn btn-primary">Terapkan</button>
-              <a type="button" class="btn btn-warning" onclick="setdefault()">Default</a>
-              <a type="button" class="btn btn-default" href="{{ url('admin/') }}">Selesai</a>           
+
+              <br>
+              <button type="submit" class="btn btn-primary btn-block">Terapkan</button>
+              <a type="button" class="btn btn-warning btn-block" onclick="setdefault()">Default</a>
+              <a type="button" class="btn btn-default btn-block" href="{{ url('admin/') }}">Selesai</a>
 
             </form>
             <br>

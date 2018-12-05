@@ -19,7 +19,7 @@
         <div class="form-group"><br>
           <label for="formGroupExampleInput">Isi Info Baris</label><br>
           <small>Disarankan menggunakan huruf kapital.</small>
-          <input name="isiInfo" type="text" class="form-control" placeholder="Isi info baris" required="required">
+          <textarea name="isiInfo" type="text" class="form-control" placeholder="Isi info baris" required="required"></textarea>
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput2">Tanggal Kadaluarsa</label>
@@ -27,10 +27,11 @@
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput2">Penulis</label>
-          <input name="penulisInfo" type="text" class="form-control" placeholder="Penulis">
+          <input name="penulisInfo" type="text" value="{{Session::get('username')}}" class="form-control" placeholder="Penulis" disabled>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <a type="button" class="btn btn-default" href="{{ url('admin/info') }}">Batal</a></div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        <a type="button" class="btn btn-default btn-block" href="{{ url('admin/info') }}">Batal</a></div>
       </form>
       <h2></h2>
     </div>

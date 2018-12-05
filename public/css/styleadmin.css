@@ -38,7 +38,7 @@ hr {
 
 /* Agenda */
 .box-border-list{
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   padding: 5px;
   font-size: small;
   display: inline-flex;

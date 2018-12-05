@@ -17,11 +17,11 @@ class AdminController extends Controller
     public function index()
     {
       if(!Session::get('login')){
-            return redirect('admin/login')->with('alert','Anda harus login dahulu');
-        }
-        else{
-            return view('admin.home');
-        }
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        return view('admin.home');
+      }
     }
 
     public function login()
@@ -50,53 +50,75 @@ class AdminController extends Controller
                 return redirect('admin');
             }
             else{
-                return redirect('admin/login')->with('alert','Password atau Username, Salah !'.Hash::check($password,$data->password));
+                return redirect('admin/login')->with('alert','Ups ! Password atau Username, Salah.'.Hash::check($password,$data->password));
             }
         }
         else{
-            return redirect('admin/login')->with('alert','Password atau Username, Salah!');
+            return redirect('admin/login')->with('alert','Ups ! Password atau Username, Salah.');
         }
     }
 
     public function home()
     {
-      // $users = DB::select('select * from agenda');
-      // return view('admin.home',['users'=>$users]);
-      return view('admin.home');
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        return view('admin.home');
+      }
     }
 
     public function about()
     {
-      $halaman = 'about';
-      return view('admin.about', compact('halaman'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'about';
+        return view('admin.about', compact('halaman'));
+      }
     }
 
     // Agenda ==========================
 
     public function agenda()
     {
-      $halaman = 'agenda';
-      $aktif_list = ModelAgenda::where('status','=','1')->get()->sortByDesc('tglUpload');
-      $jml_aktif = $aktif_list->count();
-      $nona_list = ModelAgenda::where('status','=','0')->get()->sortByDesc('tglUpload');
-      $jml_nona = $nona_list->count();
-      $agenda_list = ModelAgenda::all()->sortByDesc('tglUpload');
-      $jml_agenda = $agenda_list->count();
-      return view('admin.agenda', compact('halaman','agenda_list','jml_agenda','aktif_list','jml_aktif','nona_list','jml_nona'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'agenda';
+        $aktif_list = ModelAgenda::where('status','=','1')->orderByDesc('tglUpload')->paginate(15, ['*'], 'aktif');
+        $jml_aktif = $aktif_list->count();
+        $nona_list = ModelAgenda::where('status','=','0')->orderByDesc('tglUpload')->paginate(15, ['*'], 'non_aktif');
+        $jml_nona = $nona_list->count();
+        $agenda_list = ModelAgenda::orderByDesc('tglUpload')->paginate(15, ['*'], 'all');
+        $jml_agenda = $agenda_list->count();
+        return view('admin.agenda', compact('halaman','agenda_list','jml_agenda','aktif_list','jml_aktif','nona_list','jml_nona'));
+      }
     }
 
     public function detailagenda($id)
     {
-      $halaman = 'agenda';
-      $agenda_detail = ModelAgenda::where('id','=',$id)->get();
-      // print_r(id);die();
-      return view('admin.detailagenda', compact('halaman','agenda_detail'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'agenda';
+        $agenda_detail = ModelAgenda::where('id','=',$id)->get();
+        return view('admin.detailagenda', compact('halaman','agenda_detail'));
+      }
     }
 
     public function createagenda()
     {
-      $halaman = 'agenda';
-      return view('admin.createagenda', compact('halaman'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'agenda';
+        return view('admin.createagenda', compact('halaman'));
+      }
     }
 
     public function agendacreate(Request $request)
@@ -126,18 +148,22 @@ class AdminController extends Controller
 
     public function destroyagenda($id) // Hapus
     {
-        $data = ModelAgenda::find($id);
-        unlink('images/'.$data->gambar); //menghapus file lama
-        $data->delete();
-    		return redirect()->action('AdminController@agenda')->with('alert-success','Data berhasil dihapus.');
+      $data = ModelAgenda::find($id);
+      unlink('images/'.$data->gambar); //menghapus file lama
+      $data->delete();
+  		return redirect()->action('AdminController@agenda')->with('alert-success','Data berhasil dihapus.');
     }
 
     public function editagenda($id)
     {
-      // $data = ModelAgenda::find($id);
-      $halaman = 'agenda';
-      $data = ModelAgenda::where('id','=',$id)->get();
-      return view('admin.editagenda', compact('halaman','data'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'agenda';
+        $data = ModelAgenda::where('id','=',$id)->get();
+        return view('admin.editagenda', compact('halaman','data'));
+      }
     }
 
     public function updateagenda(Request $request, $id) // Edit
@@ -194,27 +220,42 @@ class AdminController extends Controller
 
     public function info()
     {
-      $halaman = 'info';
-      $aktif_list = ModelInfo::where('status','=','1')->get()->sortByDesc('tglUpload');
-      $jml_aktif = $aktif_list->count();
-      $nona_list = ModelInfo::where('status','=','0')->get()->sortByDesc('tglUpload');
-      $jml_nona = $nona_list->count();
-      $info_list = ModelInfo::all()->sortByDesc('tglUploadInfo');
-      $jml_info = $info_list->count();
-      return view('admin.info', compact('halaman','info_list','jml_info','aktif_list','jml_aktif','nona_list','jml_nona'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'info';
+        $aktif_list = ModelInfo::where('status','=','1')->orderByDesc('tglUploadInfo')->paginate(15, ['*'], 'aktif');
+        $jml_aktif = $aktif_list->count();
+        $nona_list = ModelInfo::where('status','=','0')->orderByDesc('tglUploadInfo')->paginate(15, ['*'], 'non_aktif');
+        $jml_nona = $nona_list->count();
+        $info_list = ModelInfo::orderByDesc('tglUploadInfo')->paginate(15, ['*'], 'all');
+        $jml_info = $info_list->count();
+        return view('admin.info', compact('halaman','info_list','jml_info','aktif_list','jml_aktif','nona_list','jml_nona'));
+      }
     }
 
     public function detailinfo($id)
     {
-      $halaman = 'info';
-      $info_detail = ModelInfo::where('id','=',$id)->get();
-      return view('admin.detailinfo', compact('halaman','info_detail'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'info';
+        $info_detail = ModelInfo::where('id','=',$id)->get();
+        return view('admin.detailinfo', compact('halaman','info_detail'));
+      }
     }
 
     public function createinfo()
     {
-      $halaman = 'info';
-      return view('admin.createinfo', compact('halaman'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'info';
+        return view('admin.createinfo', compact('halaman'));
+      }
     }
 
     public function createinfoPost(Request $request)
@@ -235,16 +276,21 @@ class AdminController extends Controller
 
     public function destroyinfo($id) // Hapus
     {
-        $data = ModelInfo::find($id);
-        $data->delete();
-    		return redirect()->action('AdminController@info')->with('alert-success','Data berhasil dihapus.');
+      $data = ModelInfo::find($id);
+      $data->delete();
+  		return redirect()->action('AdminController@info')->with('alert-success','Data berhasil dihapus.');
     }
 
     public function editinfo($id)
     {
-      $halaman = 'agenda';
-      $data = ModelInfo::where('id','=',$id)->get();
-      return view('admin.editinfo', compact('halaman','data'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'agenda';
+        $data = ModelInfo::where('id','=',$id)->get();
+        return view('admin.editinfo', compact('halaman','data'));
+      }
     }
 
     public function editinfoPost(Request $request, $id) // Edit
@@ -285,9 +331,14 @@ class AdminController extends Controller
 
     public function tema()
     {
-      $halaman = 'tema';
-      $data = ModelMasjid::where('id','=',Session::get('idMasjid'))->get();
-      return view('admin.tema', compact('halaman','data'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'tema';
+        $data = ModelMasjid::where('id','=',Session::get('idMasjid'))->get();
+        return view('admin.tema', compact('halaman','data'));
+      }
     }
 
     public function temaPost(Request $request, $id) // Edit
@@ -322,15 +373,25 @@ class AdminController extends Controller
 
     public function durasi()
     {
-      $halaman = 'durasi';
-      return view('admin.durasi', compact('halaman'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'durasi';
+        return view('admin.durasi', compact('halaman'));
+      }
     }
 
     public function durasipraadzan($idMasjid)
     {
-      $data = ModelMasjid::where('id','=',$idMasjid)->get();
-      $halaman = 'durasi';
-      return view('admin.durasipraadzan', compact('halaman','data'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $data = ModelMasjid::where('id','=',$idMasjid)->get();
+        $halaman = 'durasi';
+        return view('admin.durasipraadzan', compact('halaman','data'));
+      }
     }
 
     public function durasipraadzanPost(Request $request, $id) // Edit
@@ -347,9 +408,14 @@ class AdminController extends Controller
 
     public function durasiiqomah($idMasjid)
     {
-      $data = ModelMasjid::where('id','=',$idMasjid)->get();
-      $halaman = 'durasi';
-      return view('admin.durasiiqomah', compact('halaman','data'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $data = ModelMasjid::where('id','=',$idMasjid)->get();
+        $halaman = 'durasi';
+        return view('admin.durasiiqomah', compact('halaman','data'));
+      }
     }
 
     public function durasiiqomahPost(Request $request, $id) // Edit
@@ -374,15 +440,20 @@ class AdminController extends Controller
 
     public function durasisholat($s)
     {
-      $idMasjid = Session::get('idMasjid');
-      $data = ModelMasjid::where('id','=',$idMasjid)->get();
-      if ($s == 1) {
-        $sholat = 'Sholat Jumat';
-      }else {
-        $sholat = 'Selain Sholat Jumat';
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
       }
-      $halaman = 'durasi';
-      return view('admin.durasisholat', compact('halaman','sholat','s','data'));
+      else{
+        $idMasjid = Session::get('idMasjid');
+        $data = ModelMasjid::where('id','=',$idMasjid)->get();
+        if ($s == 1) {
+          $sholat = 'Sholat Jumat';
+        }else {
+          $sholat = 'Selain Sholat Jumat';
+        }
+        $halaman = 'durasi';
+        return view('admin.durasisholat', compact('halaman','sholat','s','data'));
+      }
     }
 
     public function durasisholatPost(Request $request, $id) // Edit
@@ -408,22 +479,34 @@ class AdminController extends Controller
 
     public function wsholat()
     {
-      $data = ModelMasjid::where('id','=',Session::get('idMasjid'))->get();
-      $halaman = 'wsholat';
-      return view('admin.wsholat', compact('halaman','data'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $data = ModelMasjid::where('id','=',Session::get('idMasjid'))->get();
+        $halaman = 'wsholat';
+        return view('admin.wsholat', compact('halaman','data'));
+      }
     }
 
     public function aturwsholat()
     {
-      $data = ModelMasjid::where('id','=',Session::get('idMasjid'))->get();
-      $halaman = 'wsholat';
-      return view('admin.aturwsholat', compact('halaman','data'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $data = ModelMasjid::where('id','=',Session::get('idMasjid'))->get();
+        $halaman = 'wsholat';
+        return view('admin.aturwsholat', compact('halaman','data'));
+      }
     }
 
     public function aturwsholatPost(Request $request, $id)
     {
       $this->validate($request,[
-        'metode' => 'required'
+        'metode' => 'required',
+        'longitude' => 'required',
+        'latitude' => 'required'
       ]);
       $data = ModelMasjid::findOrFail($id);
   		$data->metode = $request->metode;
@@ -437,8 +520,14 @@ class AdminController extends Controller
 
     public function aturwaktu()
     {
-      $halaman = 'time';
-      return view('admin.aturwaktu', compact('halaman'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $data = ModelMasjid::where('id','=',Session::get('idMasjid'))->get();
+        $halaman = 'time';
+        return view('admin.aturwaktu', compact('halaman','data'));
+      }
     }
 
     public function aturwaktuPost(Request $request)
@@ -448,30 +537,46 @@ class AdminController extends Controller
         'tgl' => 'required',
         'zona' => 'required'
       ]);
-      $data = "time ".$request->jam.":00";
-      // Windows
+      // Buat Windows
+      // $data = "time ".$request->jam.":00";
       // exec('time 20:15:00');
       // exec('date 11/01/2018');
 
-      // Linux
-      // exec('date -s "01 NOV 2018 20:22:00"');
-      return redirect()->action('AdminController@index')->with('alert-success',$data);
+      // Buat Linux
+      $data = "sudo date -s '".$request->tgl." ".$request->jam.":00'";
+      // exec('sudo date -s "01 NOV 2018 20:22:00"');
+      exec($data);
+
+      $data = ModelMasjid::findOrFail(Session::get('idMasjid'));
+      $data->zonaWaktu = $request->zona;
+  		$data->save();
+      return redirect()->action('AdminController@index')->with('alert-success','Waktu berhasil diubah.');
     }
 
     // Detail Masjid ==========================
 
     public function detailmasjid()
     {
-      $detail = ModelMasjid::where('id','=',Session::get('idMasjid'))->get();
-      $halaman = 'detail';
-      return view('admin.detailmasjid', compact('halaman','detail'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $detail = ModelMasjid::where('id','=',Session::get('idMasjid'))->get();
+        $halaman = 'detail';
+        return view('admin.detailmasjid', compact('halaman','detail'));
+      }
     }
 
     public function editmasjid($id)
     {
-      $data = ModelMasjid::where('id','=',$id)->get();
-      $halaman = 'detail';
-      return view('admin.editmasjid', compact('halaman','data'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $data = ModelMasjid::where('id','=',$id)->get();
+        $halaman = 'detail';
+        return view('admin.editmasjid', compact('halaman','data'));
+      }
     }
 
     public function editmasjidPost(Request $request, $id)
@@ -479,6 +584,8 @@ class AdminController extends Controller
       $this->validate($request,[
         'nama' => 'required',
         'kota' => 'required',
+        'longitude' => 'required',
+        'latitude' => 'required',
         'alamat' => 'required'
       ]);
       $data = ModelMasjid::findOrFail($id);
@@ -489,29 +596,44 @@ class AdminController extends Controller
       $data->latitude = $request->latitude;
   		$data->deskripsi = $request->deskripsi;
   		$data->save();
-  		return redirect()->action('AdminController@detailmasjid')->with('alert-success','Data masjid berhasil diubah.');
+      return redirect()->action('AdminController@detailmasjid')->with('alert-success','Data masjid berhasil diubah.');
     }
 
     // Admin ==========================
 
     public function admins()
     {
-      $halaman = 'admin';
-      return view('admin.admins', compact('halaman'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'admin';
+        return view('admin.admins', compact('halaman'));
+      }
     }
 
     public function detailprofil($id)
     {
-      $halaman = 'admin';
-      $data = ModelAdmin::where('id','=',$id)->get();
-      return view('admin.detailprofil', compact('halaman','data'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'admin';
+        $data = ModelAdmin::where('id','=',$id)->get();
+        return view('admin.detailprofil', compact('halaman','data'));
+      }
     }
 
     public function aturprofil($id)
     {
-      $halaman = 'admin';
-      $data = ModelAdmin::where('id','=',$id)->get();
-      return view('admin.aturprofil', compact('halaman','data'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'admin';
+        $data = ModelAdmin::where('id','=',$id)->get();
+        return view('admin.aturprofil', compact('halaman','data'));
+      }
     }
 
     public function updateprofil(Request $request, $id) // Edit
@@ -547,8 +669,13 @@ class AdminController extends Controller
 
     public function ubahpaswd()
     {
-      $halaman = 'admin';
-      return view('admin.ubahpaswd', compact('halaman'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'admin';
+        return view('admin.ubahpaswd', compact('halaman'));
+      }
     }
 
     public function ubahpaswdPost(Request $request, $id) // Edit
@@ -571,16 +698,26 @@ class AdminController extends Controller
 
     public function listadmin()
     {
-      $halaman = 'admin';
-      $admin_list = ModelAdmin::all()->sortByDesc('tglUpload');
-      $jml_admin = $admin_list->count();
-      return view('admin.listadmin', compact('halaman','admin_list','jml_admin'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'admin';
+        $admin_list = ModelAdmin::orderByDesc('updated_at')->paginate(15, ['*'], 'admin');
+        $jml_admin = $admin_list->count();
+        return view('admin.listadmin', compact('halaman','admin_list','jml_admin'));
+      }
     }
 
     public function createadmin()
     {
-      $halaman = 'admin';
-      return view('admin.createadmin', compact('halaman'));
+      if(!Session::get('login')){
+        return redirect('admin/login')->with('alert','Anda harus login dahulu');
+      }
+      else{
+        $halaman = 'admin';
+        return view('admin.createadmin', compact('halaman'));
+      }
     }
 
     public function createadminPost(Request $request)
@@ -609,20 +746,9 @@ class AdminController extends Controller
       if ($data->id == Session::get('id')){
         return redirect()->action('AdminController@logout');
       }else{
-  		  return redirect()->action('AdminController@listadmin')->with('alert-success','Data berhasil dihapus.');
+  		  return redirect()->action('AdminController@listadmin')->with('alert-success','Admin berhasil dihapus.');
       }
     }
 
-    public function create()
-    {
-      $halaman = 'siswa';
-      return view('admin.create', compact('halaman'));
-    }
-
-    // public function store(Request $request)
-    // {
-    //   $siswa = $request->all();
-    //   return $siswa;
-    // }
 
 }

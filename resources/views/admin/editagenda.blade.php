@@ -20,7 +20,7 @@
               <div class="form-group">
                 <label>Gambar*</label><br>
                 @if ("/images/{{ $agenda->gambar }}")
-                  <img id="showgambar" src="{{ asset('images/'.$agenda->gambar) }}" alt="Agenda" style="width:400px; border: 1px solid"></img><br><br>
+                  <img id="showgambar" src="{{ asset('images/'.$agenda->gambar) }}" alt="Agenda" style="width:100%;"></img><br><br>
                 @else
                   <p>Tidak ada gambar.</p>
                 @endif
@@ -28,7 +28,7 @@
                   <small>Ukuran file maksimal 2 MB. </small>
               </div>
               <div class="form-group">
-                <label>Status</label><br>            
+                <label>Status</label><br>
                 <label class="radio-inline">
                   <input type="radio" name="status" value="1" @if($agenda->status == 1) checked @endif>Aktif
                 </label>
@@ -64,8 +64,11 @@
                 <label>Keterangan</label>
                 <input name="keterangan" value="{{ $agenda->keterangan }}" type="text" class="form-control" placeholder="Keterangan">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-              <a type="button" class="btn btn-default" href="{{ url('admin/agenda/') }}">Batal</a>
+
+              <br>
+              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+              <a type="button" class="btn btn-default btn-block" href="{{ url('admin/agenda/') }}">Batal</a>
+
             </form>
             <br>
           @endforeach

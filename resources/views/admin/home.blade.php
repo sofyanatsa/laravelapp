@@ -12,10 +12,20 @@
             <div>{{Session::get('alert-success')}}</div>
         </div>
     @endif
-    <h4>Assalamualaykum, <b>{{Session::get('nama')}}.</b></h3>
-    <h5>* Username Anda : {{Session::get('username')}}</h5>
-    <h5>* Status Login  : {{Session::get('login')}}</h5>
-    <h5>* ID Anda       : {{Session::get('id')}}</h5>
+
+    <br>
+    <br>
+    <div class="panel panel-default" style="text-align: center;">
+      <div class="panel-heading">
+        <b>السلام عليكم</b>
+      </div>
+      <div class="panel-body">
+        Admin
+        <b>{{Session::get('nama')}}</b>
+      </div>
+    </div>
+
+    <br>
     <p>Pilih menu untuk mengatur jadwal sholat.</p>
     <div class="box-row">
         <div class="row">

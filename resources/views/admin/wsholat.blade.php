@@ -42,16 +42,12 @@
   </div>
 
   <script>
-    var date = new Date();
-
+    <?php date_default_timezone_set("Asia/Jakarta");?>
+    var date = new Date('{{ date("Y-m-d H:i:s") }}');
     var metode = '{{ $data[0]->metode }}';
     // print_r($data); die(); ?>;
-
-
     prayTimes.setMethod(metode);
-    // var m = prayTimes.getMethod();
-    // console.log(m + " " + metode);
-    var times = prayTimes.getTimes(date, [-6.601208, 106.806741], +7);
+    var times = prayTimes.getTimes(date, [{{ $data[0]->latitude }}, {{ $data[0]->longitude }}], {{ $data[0]->zonaWaktu }});
 
     var tgl = "";
     var hari =  ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];

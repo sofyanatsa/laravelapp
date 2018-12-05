@@ -1,18 +1,24 @@
 <script>
 // Waktu Sholat
-var date = new Date();
+<?php date_default_timezone_set("Asia/Jakarta");?>
+var date = new Date('{{ date("Y-m-d H:i:s") }}');
 var metode = '{{ $masjid[0]->metode }}';
-// if(metode=='KEMENAG'){
-//   prayTimes.setMethod('MWL');
-//    prayTimes.adjust( {fajr: 20, isha: 18} );
-// }else{
-//   prayTimes.setMethod(metode);
-// }
 prayTimes.setMethod(metode);
-  var m = prayTimes.getMethod();
-  // console.log(m + " " + metode);
 var sekarang = '';
-var times = prayTimes.getTimes(date, [-6.601208, 106.806741], +7);
+var long = {{ $masjid[0]->longitude }};
+var lat = {{ $masjid[0]->latitude }};
+
+function showPosition(position) {
+    if(position.coords.latitude != null || position.coords.longitude != null){
+      long = position.coords.longitude;
+      lat = position.coords.latitude;
+    } else {
+        long = {{ $masjid[0]->longitude }};
+        lat = {{ $masjid[0]->latitude }};
+    }
+}
+
+var times = prayTimes.getTimes(date, [lat, long], {{ $masjid[0]->zonaWaktu }});
 var list = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha', 'midnight'];
 
 // 2:54 -> 02:54
@@ -44,13 +50,6 @@ if (sekarang>=times.fajr && sekarang<times.dhuhr) {
   sholat_skr='Subuh';
   sholat_list=0;
 }
-// $.post('homepage.blade.php',{variable: sholat_list});
-// window.location.href=sholat_list;
-// $.ajax({
-//   url: '/',
-//   type: 'GET',
-//   data: {i:1},
-// });
 
 // Sekarang dalam menit
 var jam = Number(sekarang.substr(0,2));
@@ -62,11 +61,19 @@ var sjam = Number(times[list[sholat_list]].substr(0,2));
 var smenit = Number(times[list[sholat_list]].substr(3,5));
 var sterkini_menit = eval((sjam*60)+smenit);
 
-// Waktu Sholat Flipclock
+
 
 $(document).ready(function() {
+
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+      long = {{ $masjid[0]->longitude }};
+      lat = {{ $masjid[0]->latitude }};
+  }
+
   // Jam Utama
-  var jam = $('.your-clock').FlipClock({
+  var jam = $('.your-clock').FlipClock(date,{
     clockFace: 'TwentyFourHourClock'
   });
 
@@ -89,27 +96,6 @@ $(document).ready(function() {
           autoStart: false,
     });
   }
-
-  //  Down Counter Iqomah
-  // var menit_iqomah=1;
-  // // var source = "audio/reminder.mp3";
-  // var audio = document.getElementById("myaudio");
-  // // audio.autoplay = true;
-  // // audio.load();
-  // // audio.addEventListener("load",function(){
-  // //   //audio.play();
-  // // },true);
-  // // audio.src = source;
-  //
-  // var downc = $('.clock-downcounter').FlipClock(menit_iqomah*60, {
-  //       clockFace: 'MinuteCounter',
-  //       countdown: true,
-  //       callbacks: {
-  //         stop: function() {
-  //           $('.message').html('Saatnya sholat dimulai!');
-  //         }
-  //       }
-  //   });
 
 // Hari dan Tanggal
 var tgl = "";

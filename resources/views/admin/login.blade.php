@@ -12,10 +12,6 @@
     <link href="{{ asset('css/styleadmin.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/flipclock.css') }}">
 
-    <!--[if lt IE 9]
-      <script src="{{ asset('http://localhost:8000/js/html5shiv_3_7_2.min.js') }}"></script>
-      <script src="{{ asset('http://localhost:8000/js/respond_1_4_2.min.js') }}"></script>
-    <![endif]-->
   </head>
   <body>
     <div class="container">
@@ -41,17 +37,11 @@
                   {{ csrf_field() }}
                   <fieldset>
                     <div class="form-group">
-                      <!-- <input class="form-control" placeholder="E-mail" name="email" type="text"> -->
-                      <input class="form-control" placeholder="Username" id="username" name="username" type="text">
+                      <input class="form-control" placeholder="Username" id="username" name="username" type="text" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" placeholder="Password" id="password" name="password" type="password">
+                    <input class="form-control" placeholder="Password" id="password" name="password" type="password" required>
                   </div>
-                  <!-- <div class="checkbox">
-                      <label>
-                        <input name="remember" type="checkbox" value="Remember Me"> Remember Me
-                      </label>
-                  </div> -->
                   <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
                 </fieldset>
                   </form>
@@ -62,15 +52,13 @@
 
     <style type="text/css">
       body{
-          background: url(http://mymaplist.com/img/parallax/back.png);
-      	  background-color: #444;
-          background: url(http://mymaplist.com/img/parallax/pinlayer2.png),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);
+      	  background-color: #fff;
           padding-left: 10px;
           padding-right: 10px;
       }
 
       .vertical-offset-100{
-          padding-top:100px;
+          padding-top:130px;
           padding:"10px";
       }
     </style>

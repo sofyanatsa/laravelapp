@@ -8,7 +8,7 @@
         @foreach($info_detail as $info)
           <div class="col-md-12">
             <div class="col-md-6">
-              <div class="panel panel-info" style="margin:10px">
+              <div class="panel panel-default" style="margin:10px">
                 <div class="panel-heading">
                   <strong>Isi Info Baris</strong>
                 </div>
@@ -22,10 +22,10 @@
                 <tr>
                   <th>Status</th>
                   <td>
-                    @if($info->status == 1) 
-                      Aktif 
+                    @if($info->status == 1)
+                      Aktif
                       <span class="label label-success">On</span>
-                    @else 
+                    @else
                       Non-aktif
                       <span class="label label-default">Off</span>
                     @endif
@@ -44,25 +44,18 @@
                   <td>{{ $info->tglUploadInfo }}</td>
                 </tr>
               </table>
-              <table class="table table-striped">
-                <tr>
-                  <td>
-                    @if($info->status == 0)
-                      <a type="button" class="btn btn-success btn-block" href="{{ url('admin/oninfo/'.$info->id) }}" onclick="return confirm('Apakah Anda yakin ingin mengaktifkan?')">Aktifkan
-                      </a>
-                    @else
-                      <a type="button" class="btn btn-warning btn-block" href="{{ url('admin/offinfo/'.$info->id) }}" onclick="return confirm('Apakah Anda yakin ingin menon-aktifkan?')">Non-aktifkan
-                      </a> 
-                    @endif
-                  </td>
-                  <td>
-                    <a type="button" class="btn btn-default btn-block" href="{{ url('admin/editinfo/'.$info->id) }}">Edit</a>
-                  </td>
-                  <td>
-                    <a type="button" class="btn btn-danger btn-block" href="{{ url('admin/hapusinfo/'.$info->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')">Hapus</a><br>
-                  </td>
-                </tr>
-              </table>
+
+              <div style="padding:5px">
+                @if($info->status == 0)
+                  <a type="button" class="btn btn-success btn-block" href="{{ url('admin/oninfo/'.$info->id) }}" onclick="return confirm('Apakah Anda yakin ingin mengaktifkan?')">Aktifkan
+                  </a>
+                @else
+                  <a type="button" class="btn btn-warning btn-block" href="{{ url('admin/offinfo/'.$info->id) }}" onclick="return confirm('Apakah Anda yakin ingin menon-aktifkan?')">Non-aktifkan
+                  </a>
+                @endif
+                <a type="button" class="btn btn-default btn-block" href="{{ url('admin/editinfo/'.$info->id) }}">Edit</a>
+                <a type="button" class="btn btn-danger btn-block" href="{{ url('admin/hapusinfo/'.$info->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')">Hapus</a><br>
+              </div>
             </div>
           </div>
         @endforeach

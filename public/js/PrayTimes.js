@@ -105,7 +105,8 @@ function PrayTimes(method) {
 			params: { fajr: 16, isha: 14, maghrib: 4, midnight: 'Jafari' } },
 		Kemenag: {
 			name: 'Kementrian Agama RI (Kemenag)',
-			params: { fajr: 20, isha: 18, maghrib: 3 } }
+			// params: { fajr: 20, isha: 18, maghrib: 3 } }
+			params: { fajr: 20, isha: 18, maghrib: 2 } }
 	},
 
 

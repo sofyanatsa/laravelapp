@@ -14,31 +14,49 @@ class PagesController extends Controller
     //
     public function homepage()
     {
-      // $input = $req->all();
-  	  $data = DB::select('select * from agenda where status = 1');
-    	$info = DB::select('select * from info where status = 1');
-    	$masjid = DB::select('select * from masjid where id = 1');
+      $data = ModelAgenda::where('status','=','1')->get()->sortByDesc('tglUpload');
+      $info = ModelInfo::where('status','=','1')->get()->sortByDesc('tglUpload');
+      $masjid = ModelMasjid::where('id','=','1')->get();
       return view('homepage',compact('data','info','masjid'));
+    }
+
+    public function homepagePost(Request $request, $id)
+    {
+      $this->validate($request,[
+        'longitude' => 'required',
+        'latitude' => 'required'
+      ]);
+      $data = ModelMasjid::find($id);
+      $data->longitude = $request->longitude;
+      $data->latitude = $request->latitude;
+  		$data->save();
+  		return redirect()->action('PagesController@homepage');
     }
 
     public function praadzan()
     {
-  	  $data = DB::select('select * from agenda where status = 1');
-    	$info = DB::select('select * from info where status = 1');
-    	$masjid = DB::select('select * from masjid where id = 1');
+      $data = ModelAgenda::where('status','=','1')->get()->sortByDesc('tglUpload');
+      $info = ModelInfo::where('status','=','1')->get()->sortByDesc('tglUpload');
+      $masjid = ModelMasjid::where('id','=','1')->get();
       return view('praadzan',compact('data','info','masjid'));
     }
 
-    public function praiqomah()
+    public function praiqomah($s,$sholat_list)
     {
-      $masjid = DB::select('select * from masjid where id = 1');
-      return view('praiqomah',compact('masjid'));
+      $masjid = ModelMasjid::where('id','=','1')->get();
+      return view('praiqomah',compact('masjid','s','sholat_list'));
     }
 
     public function blank()
     {
-      $masjid = DB::select('select * from masjid where id = 1');
+      $masjid = ModelMasjid::where('id','=','1')->get();
       return view('blank',compact('masjid'));
+    }
+
+    public function tes()
+    {
+      $data = ModelMasjid::where('id','=','1')->get();
+      return view('tes',compact('data'));
     }
 
 }

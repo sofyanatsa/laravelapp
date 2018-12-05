@@ -12,9 +12,11 @@
 */
 
 Route::get('/', 'PagesController@homepage');
+Route::post('homepagePost/{id}','PagesController@homepagePost');
 Route::get('praadzan', 'PagesController@praadzan');
-Route::get('praiqomah', 'PagesController@praiqomah');
+Route::get('praiqomah/{s}/{sholat_list}', 'PagesController@praiqomah');
 Route::get('blank', 'PagesController@blank');
+Route::get('tes', 'PagesController@tes');
 
 Route::get('admin/login', 'AdminController@login');
 Route::get('admin/logout', 'AdminController@logout');
@@ -82,15 +84,3 @@ Route::get('admin/listadmin', 'AdminController@listadmin');
 Route::get('admin/createadmin', 'AdminController@createadmin');
 Route::post('admin/createadminPost', 'AdminController@createadminPost');
 Route::get('admin/hapusadmin/{id}', 'AdminController@destroyadmin');
-
-Route::resource('agenda','AdminController@agenda'); //tambahkan baris ini
-Route::get('agenda/{agenda}', 'AdminController@show');
-
-Route::get('admin/create', 'AdminController@create');
-Route::post('admin', 'AdminController@store');
-
-Route::get('halaman-rahasia',[
-  'as'  => 'secret',
-  'uses'=> 'RahasiaController@halamanRahasia'
-]);
-Route::get('showmesecret', 'RahasiaController@showMeSecret');

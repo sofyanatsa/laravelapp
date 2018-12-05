@@ -22,16 +22,14 @@
                   <th>Nama</th>
                   <td>{{ $data->nama }}</td>
                 </tr>
+                @if($data->status == 1)
                 <tr>
                   <th>Status</th>
                   <td>
-                    @if($data->status == 1) 
                       <span class="label label-success">Master</span>
-                    @else 
-                      <span class="label label-default">Non-master</span>
-                    @endif
                   </td>
                 </tr>
+                @endif
                 <tr>
                   <th>Username</th>
                   <td>{{ $data->username }}</td>
@@ -47,15 +45,15 @@
                 <tr>
                 </tr>
               </table>
-              @if($data->status == 1) 
-                <p>*Admin master tidak dapat dihapus.</p>
+              @if($data->status == 1)
+                <p style="padding-left:5px;">*Admin master tidak dapat dihapus.</p>
               @endif
               <div style="padding:5px">
                 <a type="button" class="btn btn-default btn-block" href="{{ url('admin/aturprofil/'.$data->id) }}">Ubah Profil Saya</a>
                 <a type="button" class="btn btn-default btn-block" href="{{ url('admin/ubahpaswd/') }}">Ubah Password</a>
-                @if($data->status == 0) 
+                @if($data->status == 0)
                   <a type="button" class="btn btn-danger btn-block" href="{{ url('admin/hapusadmin/'.$data->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapus akun?')">Hapus Akun Saya</a>
-                @endif                
+                @endif
               </div>
             </div>
           </div>

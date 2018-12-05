@@ -24,7 +24,7 @@
               <input name="isiInfo" value="{{ $info->isiInfo }}" type="text" class="form-control" placeholder="Isi info baris" required="required">
             </div>
             <div class="form-group">
-              <label>Status</label><br>            
+              <label>Status</label><br>
               <label class="radio-inline">
                 <input type="radio" name="status" value="1" @if($info->status == 1) checked @endif>Aktif
               </label>
@@ -40,8 +40,9 @@
               <label for="formGroupExampleInput2">Penulis</label>
               <input name="penulisInfo" value="{{ $info->penulisInfo }}"  type="text" class="form-control" placeholder="Penulis">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a type="button" class="btn btn-default" href="{{ url('admin/info') }}">Batal</a></div>
+            <br>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <a type="button" class="btn btn-default btn-block" href="{{ url('admin/info') }}">Batal</a></div>
           </form>
         @endforeach
       @else

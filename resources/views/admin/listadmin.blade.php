@@ -39,10 +39,8 @@
                 <div class="box-border-list-text">
                   <a>
                     <strong>{{ $admin->nama }}</strong>
-                    @if($admin->status == 1) 
+                    @if($admin->status == 1)
                       <span class="label label-success">Master</span>
-                    @else 
-                      <span class="label label-default">Non-master</span>
                     @endif
                     <br>
                     {{ $admin->username }}<br>
@@ -52,7 +50,7 @@
                 </div>
                 <div class="box-border-list-button"  style="display:block;">
                   {{ csrf_field() }}
-                  @if($admin->status == 0) 
+                  @if($admin->status == 0)
                     <a type="button" class="btn btn-danger btn-sm" href="{{ url('admin/hapusadmin/'.$admin->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')">Hapus
                     </a>
                   @endif
@@ -62,11 +60,13 @@
             </div>
           </a>
         @endforeach
+        <div class="pagination-bar text-center">
+          {{ $admin_list->links() }}
+        </div>
       @else
         <p> Tidak ada data admin.</p>
       @endif
 
     </div>
-    <hr class="line">
   </div>
 @stop

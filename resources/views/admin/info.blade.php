@@ -54,7 +54,7 @@
                         </a>
                       @else
                         <a type="button" class="btn btn-warning btn-sm" href="{{ url('admin/offinfo/'.$info->id) }}" onclick="return confirm('Apakah Anda yakin ingin menon-aktifkan?')">Non-aktifkan
-                        </a> 
+                        </a>
                       @endif
                       <br>
                       <a type="button" class="btn btn-default btn-sm" href="{{ url('admin/editinfo/'.$info->id) }}">Edit</a>
@@ -63,6 +63,9 @@
                 </div>
               </a>
             @endforeach
+            <div class="pagination-bar text-center">
+              {{ $aktif_list->links() }}
+            </div>
           </div>
         @else
           <div class="row" style="padding:5px; text-align:center">
@@ -71,6 +74,7 @@
             <p> Silahkan klik tombol dibawah ini untuk menambah info baris.</p>
             <a type="button" class="btn btn-primary" href="{{ url('admin/createinfo') }}" style="margin-bottom: 5px;">Tambah Info Baris</a>
           </div>
+          <hr>
         @endif
       </div>
 
@@ -104,7 +108,7 @@
                         </a>
                       @else
                         <a type="button" class="btn btn-warning btn-sm" href="{{ url('admin/offinfo/'.$info->id) }}" onclick="return confirm('Apakah Anda yakin ingin menon-aktifkan?')">Non-aktifkan
-                        </a> 
+                        </a>
                       @endif
                       <br>
                       <a type="button" class="btn btn-default btn-sm" href="{{ url('admin/editinfo/'.$info->id) }}">Edit</a>
@@ -113,6 +117,9 @@
                 </div>
               </a>
             @endforeach
+            <div class="pagination-bar text-center">
+              {{ $nona_list->links() }}
+            </div>
           </div>
         @else
           <div class="row" style="padding:5px; text-align:center">
@@ -121,6 +128,7 @@
             <p> Silahkan klik tombol dibawah ini untuk menambah info baris.</p>
             <a type="button" class="btn btn-primary" href="{{ url('admin/createinfo') }}" style="margin-bottom: 5px;">Tambah Info Baris</a>
           </div>
+          <hr>
         @endif
       </div>
 
@@ -154,7 +162,7 @@
                         </a>
                       @else
                         <a type="button" class="btn btn-warning btn-sm" href="{{ url('admin/offinfo/'.$info->id) }}" onclick="return confirm('Apakah Anda yakin ingin menon-aktifkan?')">Non-aktifkan
-                        </a> 
+                        </a>
                       @endif
                       <br>
                       <a type="button" class="btn btn-default btn-sm" href="{{ url('admin/editinfo/'.$info->id) }}">Edit</a>
@@ -163,6 +171,9 @@
                 </div>
               </a>
             @endforeach
+            <div class="pagination-bar text-center">
+              {{ $info_list->links() }}
+            </div>
           </div>
         @else
           <div class="row" style="padding:5px; text-align:center">
@@ -171,10 +182,10 @@
             <p> Silahkan klik tombol dibawah ini untuk menambah info baris.</p>
             <a type="button" class="btn btn-primary" href="{{ url('admin/createinfo') }}" style="margin-bottom: 5px;">Tambah Info Baris</a>
           </div>
+          <hr>
         @endif
       </div>
-      
-      <hr class="line">
+
       </div>
     </div>
 

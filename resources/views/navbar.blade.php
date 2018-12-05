@@ -5,7 +5,7 @@
     <button type="button" class="navbar-toggle collapsed"
             data-toggle="collapse"
             data-target="#bs-example-navbar-collapse-1"
-            aria-expanded="false" 
+            aria-expanded="false"
             style="float: left; margin-left: 8px; margin-right: 20%; border-color: transparent;">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
@@ -27,7 +27,7 @@
     </script>
     @endif
     <a class="navbar-brand" href="{{ url('admin/') }}" style="padding:10px;">
-      <img src="{{ asset('bootstrap_3_3_6/docs/assets/brand/bootstrap-punchout.svg') }}" width="30" height="30" style="display:inline;"></img>
+      <img src="{{ asset('logo/whitemyname2.png') }}" width="30" height="30" style="display:inline;"></img>
       AdminApp
     </a>
   </div><!-- navbar-header -->

@@ -43,8 +43,9 @@
                 <label for="formGroupExampleInput">Alamat</label>
                 <input name="alamat" value="{{ $akun->alamat }}" type="text" class="form-control fbh-phone" placeholder="Kontak">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-              <a type="button" class="btn btn-default" href="{{ url('admin/detailprofil/'.Session::get('id')) }}">Batal</a></div>
+              <br>
+              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+              <a type="button" class="btn btn-default btn-block" href="{{ url('admin/detailprofil/'.Session::get('id')) }}">Batal</a></div>
             </form>
             <br>
           @endforeach

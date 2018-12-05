@@ -19,10 +19,10 @@
                 <tr>
                   <th>Status</th>
                   <td>
-                    @if($agenda->status == 1) 
-                      Aktif 
+                    @if($agenda->status == 1)
+                      Aktif
                       <span class="label label-success">On</span>
-                    @else 
+                    @else
                       Non-aktif
                       <span class="label label-default">Off</span>
                     @endif
@@ -53,25 +53,18 @@
                   <td>{{ $agenda->keterangan }}</td>
                 </tr>
               </table>
-              <table class="table table-striped">
-                <tr>
-                  <td>
-                   @if($agenda->status == 0)
-                    <a type="button" class="btn btn-success btn-block" href="{{ url('admin/onagenda/'.$agenda->id) }}" onclick="return confirm('Apakah Anda yakin ingin mengaktifkan?')">Aktifkan
-                    </a>
-                  @else
-                    <a type="button" class="btn btn-warning btn-block" href="{{ url('admin/offagenda/'.$agenda->id) }}" onclick="return confirm('Apakah Anda yakin ingin menon-aktifkan?')">Non-aktifkan
-                    </a> 
-                  @endif
-                  </td>
-                  <td>
-                    <a type="button" class="btn btn-default btn-block" href="{{ url('admin/editagenda/'.$agenda->id) }}">Edit</a>
-                  </td>
-                  <td>
-                    <a type="button" class="btn btn-danger btn-block" href="{{ url('admin/hapusagenda/'.$agenda->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')">Hapus</a><br>
-                  </td>
-                </tr>
-              </table>
+
+              <div style="padding:5px">
+                 @if($agenda->status == 0)
+                  <a type="button" class="btn btn-success btn-block" href="{{ url('admin/onagenda/'.$agenda->id) }}" onclick="return confirm('Apakah Anda yakin ingin mengaktifkan?')">Aktifkan
+                  </a>
+                @else
+                  <a type="button" class="btn btn-warning btn-block" href="{{ url('admin/offagenda/'.$agenda->id) }}" onclick="return confirm('Apakah Anda yakin ingin menon-aktifkan?')">Non-aktifkan
+                  </a>
+                @endif
+                <a type="button" class="btn btn-default btn-block" href="{{ url('admin/editagenda/'.$agenda->id) }}">Edit</a>
+                <a type="button" class="btn btn-danger btn-block" href="{{ url('admin/hapusagenda/'.$agenda->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')">Hapus</a><br>
+              </div>
             </div>
           </div>
         @endforeach
